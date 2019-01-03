@@ -67,6 +67,14 @@
           }
         },
         {
+          "client_id": "825245580518-mik93jsn4e8e7c25og1ka3reg5liivep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.najish.chatting",
+            "certificate_hash": "d577362e1406d4c3bbd1f3a37db9f6153bebba97"
+          }
+        },
+        {
           "client_id": "825245580518-m7qgf7jg7ndp975jf90v40h48qouf503.apps.googleusercontent.com",
           "client_type": 3
         }

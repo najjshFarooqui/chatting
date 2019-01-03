@@ -90,11 +90,9 @@ public class RegisterActivity extends AppCompatActivity {
                                }
                            });
 
-                            // Sign in success, update UI with the signed-in user's information
 
                         } else {
                             progressBar.hide();
-                            // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -102,8 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 });
-
-    }
+        }
 
 
 }
