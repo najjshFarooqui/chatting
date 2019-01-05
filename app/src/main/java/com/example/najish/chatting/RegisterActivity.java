@@ -13,7 +13,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.najish.chatting.dao.ChatDao;
+import com.example.najish.chatting.dao.RegisterDao;
 import com.example.najish.chatting.databinding.ActivityRegisterBinding;
+import com.example.najish.chatting.model.Chat;
+import com.example.najish.chatting.model.RegisterModel;
+import com.example.najish.chatting.service.MyNagoriApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -30,12 +36,16 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "registerActivity";
     private Toolbar mToolbar;
     private ProgressDialog progressBar;
+    RegisterDao registerDao;
+    RegisterModel registerModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-       mToolbar=(Toolbar)findViewById(R.id.appbar);
+       registerDao= MyNagoriApplication.getDatabase().registerDao();
+
+        mToolbar=(Toolbar)findViewById(R.id.appbar);
        setSupportActionBar(mToolbar);
        getSupportActionBar().setTitle("Register yourself");
         progressBar= new ProgressDialog(this);
@@ -57,6 +67,11 @@ public class RegisterActivity extends AppCompatActivity {
                     progressBar.setCanceledOnTouchOutside(false);
                     progressBar.show();
                     registerUser(etNAme, etEmail, etPassword);
+                    ArrayList<String> registerUser = new ArrayList();
+                    registerUser.add(etNAme);
+                    registerUser.add(etEmail);
+                    registerUser.add(etPassword);
+                    //registerDao.insertAll(registerUser);
             }
                 }
         });
